@@ -198,27 +198,37 @@ Do not discuss copyright or transparency.
 // Call Node backend
 // ----------------------------
 async function callBackend(prompt) {
-  const res = await fetch("http://localhost:3000/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      messages: [
-        { role: "system", content: "You are a compliance assistant for the EU GPAI Code of Practice." },
-        { role: "user", content: prompt }
-      ]
-    })
-  });
+  const res = await fetch(
+    "https://gpai-chatbot-backend.onrender.com/api/chat",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages: [
+          {
+            role: "system",
+            content: "You are a compliance assistant for the EU GPAI Code of Practice."
+          },
+          {
+            role: "user",
+            content: prompt
+          }
+        ]
+      })
+    }
+  );
 
   const data = await res.json();
 
-  if (data.content) {
-    return data.content;
+  if (data.reply) {
+    return `${data.reply}\n\n${data.disclaimer || ""}`;
   } else if (data.error) {
     throw new Error(data.error);
   } else {
     throw new Error("Unexpected response from backend");
   }
 }
+
 
 // ----------------------------
 // Glossary
