@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPAI Code of Practice Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>GPAI Code of Practice Chatbot</h1>
+    <p>Ask questions about Transparency, Copyright, or Safety of GPAI systems</p>
+  </header>
+
+  <!-- Chapter Selection Tabs -->
+  <div id="chapter-selection">
+    <div class="tab" onclick="selectChapterTab(this,'Transparency')">Transparency</div>
+    <div class="tab" onclick="selectChapterTab(this,'Copyright')">Copyright</div>
+    <div class="tab" onclick="selectChapterTab(this,'Safety')">Safety</div>
+  </div>
+
+  <!-- Chat Section -->
+  <div id="chat-section" hidden>
+    <!-- Suggested Questions -->
+    <div id="suggested-questions"></div>
+
+    <!-- Chat Box -->
+    <div id="chat-box"></div>
+
+    <!-- User Input -->
+    <div id="input-area">
+      <input type="text" id="user-input" placeholder="Type your question here..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 - Lazidis Nikolaos</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
